@@ -46,9 +46,25 @@ for a in one_dub:
     b = (f"+{a[0]}({a[1]}){a[2]}-{a[3]}-{a[4]} доб.{a[5]}", "")
     num_list.append(b)
 
+full_list_dikt = {}
+
+bbb = 0
+
+for a in nn_dups:
+    full_list_dikt[a[0], a[1], a[2]] = num_list[bbb]
+    bbb += 1
+
+full_list = []
+
+for a, b in full_list_dikt.items():
+    full_list.append([a, b])
+
+full_list2 = []
+
+for a in full_list:
+    full_list2.append(list((a[0][0], a[0][1], a[0][2], a[1][0], a[1][1])))
+
 with open("phonebook.csv", "w") as f:
     datawriter = csv.writer(f, delimiter=',')
-    datawriter.writerows(nn_dups)
-    datawriter.writerows(num_list)
-
+    datawriter.writerows(full_list2)
 
